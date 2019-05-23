@@ -8,15 +8,20 @@ export default class App extends React.Component {
     this.state = {
       people: []
     }
+    this.fetchPeople()
   }
 
-  async componentDidMount() {
+  async fetchPeople() {
     // fetch people
     let response = await fetch('https://swapi.co/api/people')
     let json = await response.json()
     this.setState({
       people: json["results"]
     })
+  }
+
+  async componentDidMount() {
+
   }
 
   render() {
